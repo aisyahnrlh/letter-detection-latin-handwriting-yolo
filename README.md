@@ -7,7 +7,7 @@
 * [Setup](#setup)
 
 ## 🎯Overview
-This project made to detect each letter in one-word latin handwriting using You Only Look Once (YOLO) network, one of Convolutional Neural Networks’ algorithm. The experimental result shows processing time per one-word is 0.0776 second with accuracy 81.93%.
+This project made to detect each letter in one-word Latin handwriting using the You Only Look Once (YOLO) network, one of the Convolutional Neural Networks’ algorithms. The experimental result shows processing time per one word is 0.0776 seconds with an accuracy of 81.93%. 
 
 ## 🎯Demo
 

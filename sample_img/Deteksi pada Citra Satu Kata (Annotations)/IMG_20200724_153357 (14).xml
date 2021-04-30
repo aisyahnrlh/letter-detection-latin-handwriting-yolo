@@ -1,0 +1,50 @@
+<annotation>
+	<folder>pengujian5</folder>
+	<filename>IMG_20200724_153357 (14).png</filename>
+	<path>D:\darkflow-master\pengujian5\IMG_20200724_153357 (14).png</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>639</width>
+		<height>638</height>
+		<depth>1</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>y</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>61</xmin>
+			<ymin>238</ymin>
+			<xmax>267</xmax>
+			<ymax>514</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>t</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>309</xmin>
+			<ymin>128</ymin>
+			<xmax>443</xmax>
+			<ymax>352</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>h</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>464</xmin>
+			<ymin>140</ymin>
+			<xmax>595</xmax>
+			<ymax>355</ymax>
+		</bndbox>
+	</object>
+</annotation>

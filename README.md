@@ -4,7 +4,7 @@
 * [Overview](#overview)
 * [Demo](#demo)
 * [Technologies](#technologies)
-* [Setup](#setup)
+* [Steps](#steps)
 
 ## 🎯Overview
 This project made to detect each letter in one-word Latin handwriting using the You Only Look Once (YOLO) network, one of the Convolutional Neural Networks’ algorithms. The experimental result shows processing time per one word is 0.0776 seconds with an accuracy of 81.93%. 
@@ -13,26 +13,73 @@ This project made to detect each letter in one-word Latin handwriting using the 
 
 
 ## 🎯Technologies
-Labeling
-Darkflow
-mAP
+* [labelImg](https://github.com/tzutalin/labelImg) ➡️ to label each letter in image and produce its annotation.
+* [Darkflow](https://github.com/thtrieu/darkflow) ➡️ to train your weight, it translate darknet to tensorflow.
+* [mAP](https://github.com/Cartucho/mAP) ➡️ to evaluates the performance of your network detection.
 
-## 🎯Setup
-1. data acquisition
-2. image upscaling for better quailty
-3. grayscaling
-4. crop the image so one image contains only one word (size is in square ratio)
-5. change predefined_class on labelimg
-6. image labeling
-7. change parameter on cfg file
+## 🎯Steps
+Here's steps to make network for detect each letter in Latin Handwriting:
+
+### **1. Data Acquisition**
+
+The picture is taken using the camera. It would be better if you use a professional camera for better lighting and image quality.
+
+![1](https://user-images.githubusercontent.com/68186227/116775015-f78b9800-aa92-11eb-90e0-bb9fc04cef3a.gif)
+
+### **2. Grayscaling**
+
+The purpose of the grayscaling process is to equate the color of the ink used on the paper so that the features and backgrounds can be distinguished. 
+
+![3](https://user-images.githubusercontent.com/68186227/116775321-0b37fe00-aa95-11eb-9172-c5f19a1f3f8b.gif)
+
+### **3. Image Upscaling**
+
+Because the image quality I took was poor, I upscaled the image. I use [Smart Upscaler](https://icons8.com/upscaler) to upscale my image. Images can be upscaled up to 3000x3000px.
+
+![2](https://user-images.githubusercontent.com/68186227/116775217-7503d800-aa94-11eb-9f34-8475dfefa2f7.gif)
+
+### **4. Image Cropping**
+
+The image is cropped into pieces so one image contains only one word. Also the size of cropped image is in square ratio.
+
+![4](https://user-images.githubusercontent.com/68186227/116775618-8f3eb580-aa96-11eb-99c5-b97650c704e1.gif)
+
+### **5. Change Predefined Class on labelImg**
+
+Change **predefined_class.txt** file with your custom class. For this case, I wrote alphabet from A to Z.
+
+![5](https://user-images.githubusercontent.com/68186227/116775825-c06bb580-aa97-11eb-9db7-a44801330f91.gif)
+
+### **6. Image Labeling**
+
+Use [labelImg](https://github.com/tzutalin/labelImg) to label every object within the image. The result of this process is annotation that contain object's position within the image.
+
+![6](https://user-images.githubusercontent.com/68186227/116775880-1cced500-aa98-11eb-951f-bb13e1273eea.gif)
+
+### **7. Change Parameters on cfg File**
+
+In Darkflow folder, you need to change cfg file before training the weight. The parameters I changed are:
+```
+Width = 416
+Height = 416
+Batch = 64
+Subdivision = 32
+Epoch = 1000
+Learning Rate = 0.001
+Class = 26
+Filter in last two convolutional layer = num ∗ (classes + 5) where num = 5
+```
+
+![7](https://user-images.githubusercontent.com/68186227/116776084-65d35900-aa99-11eb-8d54-16dbb6bbe6bd.gif)
+
 8. change class on darkflow
 9. start training with command phyton3 flow --model cfg/name --load bin/weights --train --annotation test/training/foldername --dataset test/training/foldername
 10. try your new weights on testing dataset using image_detection.py or image_reading.py
 11. see the results
 
 ## 🎯Notes
-step ini bisa digunakan untuk semua jenis dataset tinggal menyesuaikan paramaternya agar dapat menghasilkan weight yang diinginkan
-yolo optimal untuk obyek yang besar saja, maka dari itu saya memutuskan untuk crop gambar
-please give me feedbacks in order to improve my skills
+1. This step can be used for all types of datasets. You just adjust the parameters in order to produce the desired weight.
+2. Based on my experiments result, YOLO is optimal for large objects so far. That's why I decided to crop the image so the letter in image is bigger.
+3. Please give me feedbacks in order to improve my skills.
 
 **Made with ❤️ by Aisyah Nurul Hidayah**

@@ -52,7 +52,13 @@ Change **predefined_class.txt** file with your custom class. For this case, I wr
 
 ### **6. Image Labeling**
 
-Use [labelImg](https://github.com/tzutalin/labelImg) to label every object within the image. The result of this process is annotation that contain object's position within the image.
+Use [labelImg](https://github.com/tzutalin/labelImg) to label every object within the image. Run command 
+
+```
+python labelimg.py
+```
+
+to run the code then you can label your own dataset. The result of this process is annotation that contain object's position within the image.
 
 ![6](https://user-images.githubusercontent.com/68186227/116775880-1cced500-aa98-11eb-951f-bb13e1273eea.gif)
 
@@ -72,14 +78,46 @@ Filter in last two convolutional layer = num ∗ (classes + 5) where num = 5
 
 ![7](https://user-images.githubusercontent.com/68186227/116776084-65d35900-aa99-11eb-8d54-16dbb6bbe6bd.gif)
 
-8. change class on darkflow
-9. start training with command phyton3 flow --model cfg/name --load bin/weights --train --annotation test/training/foldername --dataset test/training/foldername
-10. try your new weights on testing dataset using image_detection.py or image_reading.py
-11. see the results
+### **8. Change Class on Darkflow**
+
+Change class on **labels.txt** file with with your custom class. Like the step 5, I wrote alphabet from A to Z.
+
+![8](https://user-images.githubusercontent.com/68186227/116815960-a06cec80-ab92-11eb-9794-30370e0df6c3.gif)
+
+### **9. Training Process**
+
+Before start training, make sure your annotations & images dataset for training saved in **test/training/** directory. For testing dataset, make sure it's in the **sample_img/** directory. After that, run this command in the Darkflow directory.
+
+```
+!phyton3 flow --model cfg/[your cfg file's name] --load bin/[your weight's file name] --train --annotation [your annotations' foldername] --dataset [your images foldername]
+```
+
+After the training process is done, you run the command below to save your new weight. It will saved in **built_graph/** folder.
+
+```
+!python3 flow --model cfg/[your cfg file's name] --load -1 --savepb
+```
+
+### **10. Try New Weights on Testing Dataset**
+
+After you made your new weight, try the weight using **image_detect.py** or **image_read.py** with command
+
+```
+python image_detect.py or python image_read.py
+```
+
+the result saved in **[your directory]/out/** folder
+
+![9](https://user-images.githubusercontent.com/68186227/116817423-d6ad6a80-ab98-11eb-97a8-684c6c3f27bc.gif)
+
+### **11. See the Results and Evaluate by Measure mAP**
+
+You can measure your weight's accuracy using [mAP](https://github.com/Cartucho/mAP). Checkout the repos for more.
 
 ## 🎯Notes
 1. This step can be used for all types of datasets. You just adjust the parameters in order to produce the desired weight.
 2. Based on my experiments result, YOLO is optimal for large objects so far. That's why I decided to crop the image so the letter in image is bigger.
-3. Please give me feedbacks in order to improve my skills.
+3. Training process involved Google Colaboratory. It is okay to use your own computer.
+4. Please give me feedbacks in order to improve my skills.
 
 **Made with ❤️ by Aisyah Nurul Hidayah**
